@@ -1,0 +1,5 @@
+web_app="my_web_app:latest"
+index="index.html"
+db="mysql:latest"
+count="2"
+container_name="docker_image.we_app.latest, docker_image.db.latest"

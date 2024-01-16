@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Web App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 0.5em 1em;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to My Basic Web App</h1>
+  </header>
+  <main>
+    <p>This simple web application changes the background color when you hit this button below.</p>
+    <button id="changeColorButton">Change Background Color</button>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the button element
+      var changeColorButton = document.getElementById('changeColorButton');
+
+      // Add a click event listener to the button
+      changeColorButton.addEventListener('click', function () {
+        // Change the background color of the body
+        document.body.style.backgroundColor = getRandomColor();
+      });
+
+      // Function to generate a random color
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    });
+  </script>
+</body>
+
+</html>

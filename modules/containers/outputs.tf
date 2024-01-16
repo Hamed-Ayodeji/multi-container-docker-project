@@ -9,8 +9,8 @@ output "container_names" {
 }
 
 output "container_ips" {
-  description = "The IP addresses of the Docker containers"
-  value       = docker_container.containers[*].ip_address
+  description = "The IP addresses of the containers"
+  value       = [for c in docker_container.containers : [for n in c.network_data : n.ip_address]]
 }
 
 output "web_app_url" {

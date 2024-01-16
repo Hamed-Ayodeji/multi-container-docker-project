@@ -1,3 +1,14 @@
+# define the provider
+
+terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+      version = "3.0.2"
+    }
+  }
+}
+
 # create an image for the basic web application
 
 resource "docker_image" "web_app" {
@@ -20,7 +31,7 @@ resource "docker_container" "containers" {
   name   = element(var.app_names, count.index)
   image  = element([docker_image.web_app.id, docker_image.db.id], count.index)
 
-  environment = count.index == 1 ? var.mysql_config : {}
+  env = count.index == 1 ? [for k, v in var.mysql_config : "${k}=${v}"] : []
 
   ports {
     internal = 80

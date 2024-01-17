@@ -48,4 +48,6 @@ resource "docker_container" "containers" {
     name    = var.network_name
     aliases = [element(var.app_names, count.index)]
   }
+
+  depends_on = [ docker_image.web_app ]
 }

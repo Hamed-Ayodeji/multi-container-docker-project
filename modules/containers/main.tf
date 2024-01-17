@@ -29,7 +29,7 @@ resource "docker_image" "db" {
 resource "docker_container" "containers" {
   count = 2
   name   = element(var.app_names, count.index)
-  image  = element([docker_image.web_app.id, docker_image.db.id], count.index)
+  image  = element(var.images, count.index)
 
   env = count.index == 1 ? [for k, v in var.mysql_config : "${k}=${v}"] : []
 

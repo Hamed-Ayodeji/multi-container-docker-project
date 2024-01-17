@@ -34,8 +34,8 @@ resource "docker_container" "containers" {
   env = count.index == 1 ? [for k, v in var.mysql_config : "${k}=${v}"] : []
 
   ports {
-    internal = 80
-    external = count.index == 0 ? 8000 : 8001
+    internal = count.index == 0 ? 80 : 3306
+    external = count.index == 0 ? 8080 : 3306
   }
 
   volumes {

@@ -15,10 +15,10 @@ output "container_ips" {
 
 output "web_app_url" {
   description = "URL to access the web application"
-  value       = "http://localhost:8000"
+  value       = "http://localhost:8080"
 }
 
 output "db_url" {
   description = "URL to access the database"
-  value       = "http://localhost:8001"
+  value       = "http://localhost:3306"
 }

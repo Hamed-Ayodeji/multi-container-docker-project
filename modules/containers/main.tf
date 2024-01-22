@@ -20,7 +20,7 @@ resource "docker_image" "web_app" {
 
 # define the image for the database
 
-resource "docker_image" "db" {
+data "docker_image" "db" {
   name = var.db_image
 }
 
@@ -29,14 +29,14 @@ resource "docker_image" "db" {
 resource "docker_container" "containers" {
   count = 2
   name   = element(var.app_names, count.index)
-  image  = element(var.images, count.index)
+  image  = [docker_image.web_app, data.docker_image.db][count.index].name
 
   env = count.index == 1 ? [for k, v in var.mysql_config : "${k}=${v}"] : []
 
-  ports {
-    internal = count.index == 0 ? 80 : 3306
-    external = count.index == 0 ? 8080 : 3306
-  }
+ports {
+  internal = count.index == 0 ? 80 : 3306
+  external = count.index == 0 ? 8080 : null
+}
 
   volumes {
     container_path = count.index == 0 ? "/app" : "/var/lib/mysql"

@@ -10,5 +10,4 @@ module "containers" {
   app_names = var.app_names
   network_name = module.network.network_name
   mysql_config = var.mysql_config
-  images = var.images
 }

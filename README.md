@@ -17,7 +17,9 @@
 
 ## 1. Introduction
 
-This guide demonstrates a basic multi-container setup with networking. It showcases a simple web application served by an Nginx web server, interacting with a MySQL database. The web app, built with HTML, CSS, and JavaScript, utilizes the Nginx image as a base, while the database relies on MySQL. The primary goal is to illustrate how to set up a multi-container application with networking using Terraform. Keep in mind that this example is for educational purposes and not intended for production use. Success is achieved when the two Docker containers effectively communicate.
+This guide demonstrates a basic multi-container setup with networking. It showcases a simple web application served by an Nginx web server, interacting with a MySQL database. The web app, built with HTML, CSS, and JavaScript, utilizes the Nginx image as a base, while the database relies on MySQL.
+
+The primary goal is to illustrate how to set up a multi-container application with networking using Terraform. Keep in mind that this example is for educational purposes and not intended for production use. Success is achieved when the two Docker containers effectively communicate.
 
 ## 2. Setup
 
@@ -76,9 +78,11 @@ The project's architecture is shown below:
 
 ## 3. Testing
 
-After applying the Terraform configuration, the web application should be accessible at `http://localhost:8080`. It should connect to the database successfully and display data.
+After applying the Terraform configuration, the web application should be accessible at [http://localhost:8080](http://localhost:8080). It should connect to the database successfully and display data.
 
-To verify the connection, run:
+![Web App](./.img/Screenshot%202024-01-22%20223401.png)
+
+To verify the connection between the containers, run the commands in the image below:
 
 ![Test](./.img/multidockercontainers.png)
 
@@ -112,4 +116,6 @@ To contribute, fork the repository, make changes, and push them back by creating
 
 ## 8. Conclusion
 
-In conclusion, this project provides a simple example of setting up a multi-container application with networking. Terraform is used to deploy Docker containers locally. Emphasizing its non-production nature, success is achieved when the two Docker containers communicate effectively, facilitated by being on the same network.
+In conclusion, this project provides a simple example of setting up a multi-container application with networking.
+
+Terraform is used to deploy the Docker containers locally. Success is achieved when the two Docker containers communicate effectively, this is achieved by placing both containers on the same network.

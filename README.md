@@ -14,7 +14,6 @@
 - [7. Contributing](#7-contributing)
 - [8. Conclusion](#8-conclusion)
 
-
 ## 1. Introduction
 
 This guide demonstrates a basic multi-container setup with networking. It showcases a simple web application served by an Nginx web server, interacting with a MySQL database. The web app, built with HTML, CSS, and JavaScript, utilizes the Nginx image as a base, while the database relies on MySQL.
@@ -64,6 +63,8 @@ The project's architecture is shown below:
     ```terraform
     app_names = ["web_app", "db"]
     ```
+
+    **Note:** Ensure you pull the database image from Docker Hub before running the Terraform configuration. The image used in this example is `mysql:latest`.
 
 4. Run these commands:
 
